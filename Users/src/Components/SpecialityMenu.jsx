@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { specialityData } from "../Assets/assets";
+
+// This component renders a menu of specialities with images and links to respective pages.
+// It uses the `specialityData` array to dynamically generate the menu items.
 function SpecialityMenu() {
   return (
     <div
@@ -16,7 +19,12 @@ function SpecialityMenu() {
 
       <div className="flex sm:justify-center gap-4 pt-5 w-full overflow-scroll">
         {specialityData.map((item, index) => (
-          <Link className="" to={`/doctors/${item.speciality}`} key={index}>
+          <Link
+            onClick={() => window.scrollTo(0, 0)}
+            className="flex flex-col items-center text-xs cursor-pointer flex-shrink-0 hover:translate-y-[-10px] transition-all duration-500 "
+            to={`/doctors/${item.speciality}`}
+            key={index}
+          >
             <img className="w-16 sm:w-24 mb-2 " src={item.image} alt="" />
             <p>{item.speciality}</p>
           </Link>
