@@ -1,13 +1,14 @@
-import React from 'react'
-import Header from '../Components/Header'
+import React from "react";
+import Header from "../Components/Header";
+import SpecialityMenu from "../Components/SpecialityMenu";
 
 function Home() {
   return (
     <div>
-      <p>Home Page</p>
       <Header />
+      <SpecialityMenu />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
