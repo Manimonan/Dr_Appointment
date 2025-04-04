@@ -17,7 +17,7 @@ function SpecialityMenu() {
       <div className="flex sm:justify-center gap-4 pt-5 w-full overflow-scroll">
         {specialityData.map((item, index) => (
           <Link className="" to={`/doctors/${item.speciality}`} key={index}>
-            <img className="w-16 sm:w-24 mb-2 gap-1" src={item.image} alt="" />
+            <img className="w-16 sm:w-24 mb-2 " src={item.image} alt="" />
             <p>{item.speciality}</p>
           </Link>
         ))}
