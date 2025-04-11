@@ -43,7 +43,7 @@ function TopDoctors() {
         className="bg-blue-50 text-gray-700 font-semibold px-12 py-3 rounded-full mt-10 cursor-pointer border border-gray-300 hover:bg-blue-100 transition-all duration-500"
         onClick={() => {
           navigate("/doctors");
-          scrolTo(0, 0);
+          scrollTo(0, 0);
         }}
         // Navigate to the doctors page when clicked
       >

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState ,useEffect} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../Context/App Context";
 
@@ -20,9 +20,9 @@ function Doctors() {
     }
   };
   // Call the filter function when the component mounts or when the speciality changes
-  React.useEffect(() => {
+  useEffect(() => {
     applyFilter();
-  }, [doctors, speciality]);
+  },[ doctors, speciality]);
   // If no speciality is selected, show all doctors
 
   return (
