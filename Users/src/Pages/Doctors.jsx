@@ -1,4 +1,4 @@
-import React, { useContext, useState ,useEffect} from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../Context/App Context";
 
@@ -7,6 +7,7 @@ function Doctors() {
   const { speciality } = useParams();
   const { doctors } = useContext(AppContext);
   const [filteredDoctors, setFilteredDoctors] = useState([]);
+  const [showFilters, setShowFilters] = useState(false);
 
   // Filter doctors based on the selected speciality
   const applyFilter = () => {
@@ -22,21 +23,29 @@ function Doctors() {
   // Call the filter function when the component mounts or when the speciality changes
   useEffect(() => {
     applyFilter();
-  },[ doctors, speciality]);
+  }, [doctors, speciality]);
   // If no speciality is selected, show all doctors
 
   return (
     <div className="">
       <p className="text-gray-700">Browse through the doctors specialists</p>
       <div className="flex flex-col sm:flex-row items-start gap-20 py-16 mx-4">
-        <div className=" flex flex-col gap-4 text-sm text-gray-800">
+        <button
+          className={`py-1 px-3 border rounded text-xl transition-all cursor-pointer sm:hidden ${
+            showFilters ? "bg-blue-600 text-white" : ""
+          }`}
+          onClick={() => setShowFilters((priv) => !priv)}
+        >
+          Filters
+        </button>
+        <div className={` flex flex-col text-sm text-gray-800 gap-4  ${showFilters ? "flex" : "hidden sm:flex"}`}>
           <p
             onClick={() =>
               speciality === "General physician"
                 ? navigate("/doctors")
                 : navigate("/doctors/General physician")
             }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
+            className={`w-[90vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
               speciality === "General physician"
                 ? "bg-blue-50 text-gray-800 font-semibold"
                 : ""
@@ -50,7 +59,7 @@ function Doctors() {
                 ? navigate("/doctors")
                 : navigate("/doctors/Gynecologist")
             }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
+            className={`w-[90vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
               speciality === "Gynecologist"
                 ? "bg-blue-50 text-gray-800 font-semibold"
                 : ""
@@ -64,7 +73,7 @@ function Doctors() {
                 ? navigate("/doctors")
                 : navigate("/doctors/Dermatologist")
             }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
+            className={`w-[90vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
               speciality === "Dermatologist"
                 ? "bg-blue-50 text-gray-800 font-semibold"
                 : ""
@@ -78,7 +87,7 @@ function Doctors() {
                 ? navigate("/doctors")
                 : navigate("/doctors/Pediatricians")
             }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
+            className={`w-[90vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
               speciality === "Pediatricians"
                 ? "bg-blue-50 text-gray-800 font-semibold"
                 : ""
@@ -92,7 +101,7 @@ function Doctors() {
                 ? navigate("/doctors")
                 : navigate("/doctors/Neurologist")
             }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
+            className={`w-[90vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
               speciality === "Neurologist"
                 ? "bg-blue-50 text-gray-800 font-semibold"
                 : ""
@@ -106,7 +115,7 @@ function Doctors() {
                 ? navigate("/doctors")
                 : navigate("/doctors/Gastroenterologist")
             }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
+            className={`w-[90vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-500 rounded transition-all cursor-pointer hover:bg-blue-50 hover:text-gray-800 ${
               speciality === "Gastroenterologist"
                 ? "bg-blue-50 text-gray-800 font-semibold"
                 : ""
@@ -122,7 +131,7 @@ function Doctors() {
               key={index}
               onClick={() => navigate(`/appointments/${item._id}`)}
               // Navigate to the doctor's profile page when clicked
-              className="border border-primary rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500 h-[300px] w-[160px]"
+              className="border border-primary rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500 "
             >
               {/* Display doctor's image, availability, name, and speciality */}
               <img className="bg-blue-50" src={item.image} alt="" />
