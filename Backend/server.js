@@ -19,7 +19,7 @@ app.use(cors());
 app.use("/api/admin", adminRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hallow World");
+  res.send("<h1>Hallow World</h1>");
 });
 
 app.listen(PORT, () => {

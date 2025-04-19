@@ -17,7 +17,7 @@ const doctorSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      required: true,
+      required: false,
     },
     speciality: {
       type: String,
@@ -37,11 +37,11 @@ const doctorSchema = new mongoose.Schema(
     },
     available: {
       type: Boolean,
-      required: true,
+      required: false,
     },
     fees: {
       type: Number,
-      required: true,
+      default:true,
     },
     address: {
       type: Object,
